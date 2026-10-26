@@ -1,0 +1,7 @@
+alias dcu="sudo docker-compose up -d"
+alias dcd="sudo docker-compose down"
+alias dps="sudo docker ps"
+alias der="sudo docker exec -it <Users\Thinkpad L380\prak-dis-dec\04\streaming-replication>-postgres_replica-1 bash"
+alias dep="sudo docker exec -it <Users\Thinkpad L380\prak-dis-dec>-postgres_primary-1 bash"
+alias dlr="sudo docker logs <Users\Thinkpad L380\prak-dis-deci>-postgres_replica-1"
+alias dlp="sudo docker logs <Users\Thinkpad L380\prak-dis-dec>-postgres_primary-1"
