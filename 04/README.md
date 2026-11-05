@@ -72,8 +72,8 @@ Praktikum ini menggunakan Docker Compose, Apache Ignite CLI, dan perintah SQL un
 **Langkah 1. Memastikan Docker Desktop berjalan**
 
 Buka Docker Desktop dari menu Start. Tunggu sampai proses inisialisasi selesai.
-
 <img src="images/01.png" width="700">
+
 
 Penjelasan: Docker Desktop digunakan untuk menjalankan PostgreSQL dan Apache Ignite dalam container. Sebelum praktikum dimulai, Docker harus dapat menerima perintah dari terminal.
 
