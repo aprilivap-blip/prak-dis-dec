@@ -73,7 +73,7 @@ WSL2 merupakan fitur Windows yang memungkinkan pengguna menjalankan lingkungan L
 
 Jalankan perintah berikut pada terminal bawaan Visual Studio Code dengan lingkungan PowerShell:
 
-<img src="images/01.png" width="700">
+<img src="Images/01.png" width="700">
 
 **Penjelasan:**
 
@@ -83,7 +83,7 @@ Perintah `wsl --status` digunakan untuk mengetahui informasi konfigurasi Windows
 
 Jalankan perintah berikut:
 
-<img src="images/02.png" width="700">
+<img src="Images/02.png" width="700">
 
 **Penjelasan:**
 
@@ -95,7 +95,7 @@ Perintah tersebut digunakan untuk menampilkan daftar distribusi Linux yang sudah
 
 Pada terminal Ubuntu di Visual Studio Code, dan periksa compiler Java:
 
-<img src="images/03.png" width="700">
+<img src="Images/03.png" width="700">
 
 **Penjelasan:**
 
@@ -103,7 +103,7 @@ Perintah `java -version` digunakan untuk mengetahui versi Java yang terpasang pa
 
 Apabila JDK belum terpasang, lakukan instalasi menggunakan perintah:
 
-<img src="images/04.png" width="700">
+<img src="Images/04.png" width="700">
 
 **Langkah 4. Mengatur JAVA_HOME**
 
@@ -111,7 +111,7 @@ Periksa lokasi instalasi Java dengan perintah:
 Kemudian atur variabel JAVA_HOME sesuai lokasi JDK yang terpasang. Contoh:
 Agar konfigurasi tetap tersimpan, jalankan:
 
-<img src="images/05.png" width="700">
+<img src="Images/05.png" width="700">
 
 **Penjelasan:**
 
@@ -121,7 +121,7 @@ JAVA_HOME merupakan variabel lingkungan yang digunakan untuk menunjukkan lokasi 
 
 **Langkah 5. Mengunduh Apache Hadoop**
 
-<img src="images/06.png" width="700">
+<img src="Images/06.png" width="700">
 
 **Penjelasan:**
 
@@ -129,7 +129,7 @@ Pada tahap ini dilakukan pengunduhan Apache Hadoop versi 3.5.0 yang akan digunak
 
 **Langkah 6. Mengekstrak file Hadoop**
 
-<img src="images/07.png" width="700">
+<img src="Images/07.png" width="700">
 
 **Penjelasan:**
 
@@ -137,7 +137,7 @@ Perintah `tar -xvf` digunakan untuk mengekstrak file Hadoop yang telah diunduh. 
 
 **Langkah 7. Mengatur variabel lingkungan Hadoop**
 
-<img src="images/08.png" width="700">
+<img src="Images/08.png" width="700">
 
 **Penjelasan:**
 
@@ -151,9 +151,9 @@ Perintah `hadoop version` digunakan untuk memastikan bahwa instalasi Hadoop tela
 
 Jalankan perintah, Kemudian aktifkan layanan SSH:
 
-<img src="images/09.png" width="700">
+<img src="Images/09.png" width="700">
 
-<img src="images/10.png" width="700">
+<img src="Images/10.png" width="700">
 
 **Penjelasan:**
 
@@ -163,7 +163,7 @@ SSH digunakan sebagai sarana komunikasi antar-node, sedangkan PDSH digunakan unt
 
 Jalankan perintah, Tambahkan konfigurasi ke `.bashrc`:
 
-<img src="images/11.png" width="700">
+<img src="Images/11.png" width="700">
 
 **Penjelasan:**
 
@@ -171,9 +171,9 @@ Variabel `PDSH_RCMD_TYPE` digunakan untuk menentukan jenis komunikasi jarak jauh
 
 **Langkah 10. Membuat SSH tanpa password**
 
-<img src="images/12.png" width="700">
+<img src="Images/12.png" width="700">
 
-<img src="images/13.png" width="700">
+<img src="Images/13.png" width="700">
 
 **Penjelasan:**
 
@@ -183,11 +183,11 @@ Pada tahap ini dibuat pasangan SSH key yang terdiri dari private key dan public 
 
 File konfigurasi Hadoop berada pada direktori:
 
-<img src="images/14.png" width="700">
+<img src="Images/14.png" width="700">
 
 **Langkah 11. Mengatur file hdfs-site.xml**
 
-<img src="images/15.png" width="700">
+<img src="Images/15.png" width="700">
 
 **Penjelasan:**
 
@@ -196,7 +196,7 @@ File `hdfs-site.xml` digunakan untuk mengatur konfigurasi khusus HDFS. Pada konf
 **Langkah 12. Mengatur file core-site.xml**
 Masukkan konfigurasi berikut:
 
-<img src="images/16.png" width="700">
+<img src="Images/16.png" width="700">
 
 **Penjelasan:**
 
@@ -204,7 +204,7 @@ File `core-site.xml` digunakan untuk mengatur konfigurasi utama Hadoop. Properti
 
 **Langkah 13. Mengatur file mapred-site.xml**
 
-<img src="images/17.png" width="700">
+<img src="Images/17.png" width="700">
 
 **Penjelasan:**
 
@@ -213,7 +213,7 @@ File `mapred-site.xml` digunakan untuk mengatur konfigurasi MapReduce. Properti 
 **Langkah 14. Mengatur file yarn-site.xml**
 Masukkan konfigurasi:
 
-<img src="images/18.png" width="700">
+<img src="Images/18.png" width="700">
 
 **Penjelasan:**
 
@@ -225,7 +225,7 @@ File `yarn-site.xml` digunakan untuk mengatur konfigurasi YARN. Pengaturan terse
 
 Jalankan perintah:
 
-<img src="images/19.png" width="700">
+<img src="Images/19.png" width="700">
 
 **Penjelasan:**
 
@@ -238,7 +238,7 @@ Format NameNode hanya dilakukan satu kali pada saat inisialisasi. Sesuai petunju
 **Langkah 16. Mengatur JAVA_HOME pada file hadoop-env.sh**
 Sesuaikan bagian JAVA_HOME menjadi:
 
-<img src="images/20.png" width="700">
+<img src="Images/20.png" width="700">
 
 **Penjelasan:**
 
@@ -248,7 +248,7 @@ Konfigurasi ini bertujuan agar Apache Hadoop dapat menemukan lokasi instalasi Ja
 
 **Langkah 17. Menjalankan layanan HDFS**
 
-<img src="images/21.png" width="700">
+<img src="Images/21.png" width="700">
 
 **Penjelasan:**
 
@@ -260,7 +260,7 @@ NameNode bertugas mengelola metadata, DataNode menyimpan blok data, sedangkan Se
 
 Jalankan perintah:
 
-<img src="images/22.png" width="700">
+<img src="Images/22.png" width="700">
 
 **Penjelasan:**
 
@@ -272,7 +272,7 @@ Perintah `jps` digunakan untuk menampilkan proses Java yang sedang berjalan. Mel
 
 Buka browser Windows dan akses alamat:
 
-<img src="images/23.png" width="700">
+<img src="Images/23.png" width="700">
 
 **Penjelasan:**
 
@@ -286,7 +286,7 @@ Apabila halaman dapat diakses dan menunjukkan layanan aktif, hal tersebut menjad
 
 Jalankan perintah:
 
-<img src="images/24.png" width="700">
+<img src="Images/24.png" width="700">
 
 **Penjelasan:**
 
@@ -298,7 +298,7 @@ Opsi `-p` memungkinkan pembuatan direktori induk apabila sebelumnya belum tersed
 
 Jalankan perintah:
 
-<img src="images/25.png" width="700">
+<img src="Images/25.png" width="700">
 
 **Penjelasan:**
 
@@ -308,7 +308,7 @@ Perintah `hdfs dfs -ls` digunakan untuk menampilkan daftar file dan direktori ya
 
 Jalankan perintah :
 
-<img src="images/26.png" width="700">
+<img src="Images/26.png" width="700">
 
 **Penjelasan:**
 
@@ -318,7 +318,7 @@ Pada tahap ini dilakukan pengumpulan tiga dataset dengan format CSV yang akan di
 
 Setelah ketiga file tersedia pada direktori lokal, jalankan perintah:
 
-<img src="images/27.png" width="700">
+<img src="Images/27.png" width="700">
 
 **Penjelasan:**
 
@@ -328,7 +328,7 @@ Perintah `hdfs dfs -put` digunakan untuk menyalin file dari penyimpanan lokal ke
 
 Jalankan perintah, untuk melihat ukuran file, gunakan:
 
-<img src="images/28.png" width="700">
+<img src="Images/28.png" width="700">
 
 **Penjelasan:**
 
@@ -342,7 +342,7 @@ Apabila ketiga file CSV muncul pada direktori datasets, berarti proses pemindaha
 
 Setelah seluruh proses praktikum selesai, jalankan perintah:
 
-<img src="images/29.png" width="700">
+<img src="Images/29.png" width="700">
 
 **Penjelasan:**
 
