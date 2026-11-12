@@ -89,7 +89,7 @@ Sebelum memulai praktikum, dilakukan pemeriksaan terhadap perangkat lunak yang d
 
 Perintah:
 
-<img src="Images/01.png" width="700">
+<img src="images/01.png" width="700">
 
 Berdasarkan perintah tersebut, terminal menampilkan versi Python yang terpasang pada sistem. Pemeriksaan ini dilakukan untuk memastikan Python telah tersedia dan dapat digunakan sebagai bahasa pemrograman dalam menjalankan aplikasi Flask.
 
@@ -97,7 +97,7 @@ Berdasarkan perintah tersebut, terminal menampilkan versi Python yang terpasang 
 
 Perintah:
 
-<img src="Images/02.png" width="700">
+<img src="images/02.png" width="700">
 
 Perintah tersebut digunakan untuk mengetahui versi uv yang terpasang. uv digunakan dalam praktikum ini untuk membuat environment Python dan memasang paket yang dibutuhkan oleh aplikasi.
 
@@ -105,7 +105,7 @@ Perintah tersebut digunakan untuk mengetahui versi uv yang terpasang. uv digunak
 
 Perintah:
 
-<img src="Images/03.png" width="700">
+<img src="images/03.png" width="700">
 
 Pemeriksaan Git dilakukan untuk memastikan perangkat lunak pengelola repository telah tersedia. Git nantinya digunakan untuk mengambil source code Flask dari GitHub.
 
@@ -113,7 +113,7 @@ Pemeriksaan Git dilakukan untuk memastikan perangkat lunak pengelola repository 
 
 Perintah:
 
-<img src="Images/04.png" width="700">
+<img src="images/04.png" width="700">
 
 Perintah tersebut digunakan untuk mengetahui versi Docker yang telah terpasang. Docker akan digunakan untuk membangun image dan menjalankan aplikasi Flask dalam container.
 
@@ -121,7 +121,7 @@ Perintah tersebut digunakan untuk mengetahui versi Docker yang telah terpasang. 
 
 Perintah:
 
-<img src="Images/05.png" width="700">
+<img src="images/05.png" width="700">
 
 Pemeriksaan dilakukan untuk mengetahui versi Podman yang digunakan. Podman menjadi alternatif dalam proses pembuatan dan pengoperasian container pada praktikum ini.
 
@@ -133,7 +133,7 @@ Pada tahap ini dilakukan pengambilan source code Flask dari repository GitHub. S
 
 Perintah:
 
-<img src="Images/06.png" width="700">
+<img src="images/06.png" width="700">
 
 Perintah tersebut digunakan untuk membuat direktori bernama `src` pada direktori utama pengguna. Direktori ini berfungsi sebagai tempat penyimpanan repository yang akan diunduh. Opsi `-p` digunakan agar direktori tidak menimbulkan kesalahan apabila sebelumnya sudah tersedia.
 
@@ -141,7 +141,7 @@ Perintah tersebut digunakan untuk membuat direktori bernama `src` pada direktori
 
 Perintah:
 
-<img src="Images/07.png" width="700">
+<img src="images/07.png" width="700">
 
 Perintah `cd` digunakan untuk berpindah ke direktori `src` yang telah dibuat sebelumnya. Proses pengunduhan repository dilakukan dari direktori tersebut agar susunan file lebih terorganisasi.
 
@@ -149,7 +149,7 @@ Perintah `cd` digunakan untuk berpindah ke direktori `src` yang telah dibuat seb
 
 Perintah:
 
-<img src="Images/08.png" width="700">
+<img src="images/08.png" width="700">
 
 Perintah tersebut digunakan untuk mengunduh seluruh source code Flask dari GitHub ke dalam komputer. Repository yang diunduh akan tersimpan dalam direktori bernama `flask`. Source code ini nantinya digunakan untuk mengambil contoh aplikasi tutorial yang telah disediakan oleh pengembang Flask. Tapi diterminal terlihat tulisan fatal karena folder repository Flask sudah tersedia di ~/src/flask jadi tidak perlu clone ulang.
 
@@ -157,7 +157,7 @@ Perintah tersebut digunakan untuk mengunduh seluruh source code Flask dari GitHu
 
 Perintah:
 
-<img src="Images/09.png" width="700">
+<img src="images/09.png" width="700">
 
 Perintah tersebut digunakan untuk menyalin direktori `tutorial` yang berada di dalam repository Flask ke direktori praktikum dengan nama `flask-app`. Opsi `-R` digunakan agar seluruh isi direktori beserta subdirektorinya ikut disalin. Folder tersebut berisi source code aplikasi blog yang akan digunakan pada tahap berikutnya.
 
@@ -165,7 +165,7 @@ Perintah tersebut digunakan untuk menyalin direktori `tutorial` yang berada di d
 
 Perintah:
 
-<img src="Images/10.png" width="700">
+<img src="images/10.png" width="700">
 
 Perintah tersebut digunakan untuk masuk ke direktori `flask-app`. Seluruh proses konfigurasi, instalasi paket, dan pembuatan container selanjutnya dilakukan dari direktori ini.
 
@@ -173,7 +173,7 @@ Perintah tersebut digunakan untuk masuk ke direktori `flask-app`. Seluruh proses
 
 Perintah:
 
-<img src="Images/11.png" width="700">
+<img src="images/11.png" width="700">
 
 Perintah `ls -la` digunakan untuk menampilkan seluruh file dan folder yang terdapat pada direktori aplikasi, termasuk file tersembunyi. Pemeriksaan ini dilakukan untuk memastikan source code Flask telah berhasil disalin dan file konfigurasi yang diperlukan tersedia.
 
@@ -185,7 +185,7 @@ Setelah source code tersedia, tahap selanjutnya adalah membuat environment Pytho
 
 Perintah:
 
-<img src="Images/12.png" width="700">
+<img src="images/12.png" width="700">
 
 Perintah tersebut digunakan untuk menyediakan Python versi 3.14.4 melalui uv. Apabila versi tersebut sudah tersedia, uv akan menggunakan instalasi yang ada sehingga tidak perlu mengunduhnya kembali.
 
@@ -193,7 +193,7 @@ Perintah tersebut digunakan untuk menyediakan Python versi 3.14.4 melalui uv. Ap
 
 Perintah:
 
-<img src="Images/13.png" width="700">
+<img src="images/13.png" width="700">
 
 Perintah tersebut digunakan untuk membuat virtual environment menggunakan Python versi 3.14.4. Secara default, environment akan dibuat dalam direktori `.venv`. Environment ini berfungsi untuk memisahkan paket yang digunakan oleh aplikasi Flask dari instalasi Python utama.
 
@@ -201,7 +201,7 @@ Perintah tersebut digunakan untuk membuat virtual environment menggunakan Python
 
 Perintah:
 
-<img src="Images/14.png" width="700">
+<img src="images/14.png" width="700">
 
 Perintah tersebut digunakan untuk mengaktifkan virtual environment yang telah dibuat. Apabila berhasil, biasanya nama environment akan muncul pada bagian awal prompt terminal. Dengan demikian, perintah Python dan instalasi paket selanjutnya menggunakan environment tersebut.
 
@@ -211,7 +211,7 @@ Setelah environment aktif, dilakukan pemasangan paket yang dibutuhkan oleh aplik
 
 Perintah:
 
-<img src="Images/15.png" width="700">
+<img src="images/15.png" width="700">
 
 Perintah tersebut digunakan untuk memasang paket aplikasi berdasarkan konfigurasi yang terdapat pada file `pyproject.toml`. Opsi `-e` menunjukkan bahwa instalasi dilakukan dalam mode editable sehingga perubahan pada source code lokal dapat digunakan tanpa harus memasang ulang paket setiap kali terjadi perubahan.
 
@@ -223,7 +223,7 @@ Setelah proses instalasi selesai, aplikasi perlu diinisialisasi sebelum dijalank
 
 Perintah:
 
-<img src="Images/16.png" width="700">
+<img src="images/16.png" width="700">
 
 Perintah tersebut digunakan untuk menjalankan perintah inisialisasi database pada aplikasi Flask. Proses ini mempersiapkan database yang dibutuhkan agar aplikasi dapat menyimpan dan mengelola data.
 
@@ -231,7 +231,7 @@ Perintah tersebut digunakan untuk menjalankan perintah inisialisasi database pad
 
 Perintah:
 
-<img src="Images/17.png" width="700">
+<img src="images/17.png" width="700">
 
 Perintah tersebut digunakan untuk menjalankan aplikasi Flask menggunakan development server bawaan. Secara default, aplikasi dapat diakses melalui alamat lokal `http://127.0.0.1:5000`.
 
@@ -239,7 +239,7 @@ Perintah tersebut digunakan untuk menjalankan aplikasi Flask menggunakan develop
 
 Buka browser dan masukkan alamat:
 
-<img src="Images/18.png" width="700">
+<img src="images/18.png" width="700">
 
 Berdasarkan tampilan browser, aplikasi blog Flask dapat diperiksa melalui halaman utama yang menampilkan bagian Posts serta menu Register dan Log In. Pada tahap ini, menu Register dapat digunakan untuk mencoba membuat akun, kemudian dilanjutkan dengan menu Log In untuk menguji proses masuk ke aplikasi.
 
@@ -255,7 +255,7 @@ Buat file baru dengan nama `Dockerfile` pada direktori utama `flask-app`.
 
 Isi file:
 
-<img src="Images/19.png" width="700">
+<img src="images/19.png" width="700">
 
 Dockerfile tersebut berisi instruksi yang digunakan untuk membangun image aplikasi Flask. Instruksi `FROM` menentukan image Python sebagai dasar pembuatan container. `RUN mkdir /app` digunakan untuk membuat direktori aplikasi, sedangkan `WORKDIR /app` menentukan direktori kerja di dalam container. Instruksi `ADD` digunakan untuk menyalin file aplikasi ke dalam container.
 
@@ -267,7 +267,7 @@ Pada Windows, Docker Desktop harus dalam keadaan berjalan dan integrasi WSL2 har
 
 Perintah pemeriksaan:
 
-<img src="Images/20.png" width="700">
+<img src="images/20.png" width="700">
 
 Perintah tersebut digunakan untuk memeriksa informasi Docker, termasuk konfigurasi client dan server. Pemeriksaan ini memastikan Docker dapat berkomunikasi dengan engine yang digunakan untuk membangun dan menjalankan container.
 
@@ -275,8 +275,8 @@ Perintah tersebut digunakan untuk memeriksa informasi Docker, termasuk konfigura
 
 Pastikan terminal berada pada direktori `flask-app`, kemudian jalankan:
 
-<img src="Images/21.png" width="700">
-<img src="Images/22.png" width="700">
+<img src="images/21.png" width="700">
+<img src="images/22.png" width="700">
 
 Perintah tersebut digunakan untuk membangun image aplikasi berdasarkan instruksi yang terdapat dalam Dockerfile. Opsi `-f Dockerfile` menentukan file yang digunakan, sedangkan `-t flaskr:1.0.0` memberikan nama dan tag pada image. Tanda titik di akhir perintah menunjukkan bahwa direktori saat ini digunakan sebagai build context.
 
@@ -284,7 +284,7 @@ Perintah tersebut digunakan untuk membangun image aplikasi berdasarkan instruksi
 
 Perintah:
 
-<img src="Images/23.png" width="700">
+<img src="images/23.png" width="700">
 
 Perintah tersebut digunakan untuk menampilkan daftar image yang tersedia pada Docker. Pemeriksaan dilakukan untuk memastikan image `flaskr` dengan tag `1.0.0` telah berhasil dibuat.
 
@@ -292,7 +292,7 @@ Perintah tersebut digunakan untuk menampilkan daftar image yang tersedia pada Do
 
 Perintah:
 
-<img src="Images/24.png" width="700">
+<img src="images/24.png" width="700">
 
 Perintah tersebut digunakan untuk menjalankan image Flask sebagai container. Opsi `-p 5001:5000` digunakan untuk menghubungkan port 5000 pada container dengan port 5001 pada komputer lokal. Dengan demikian, aplikasi dapat diakses melalui port 5001 dari browser.
 
@@ -300,7 +300,7 @@ Perintah tersebut digunakan untuk menjalankan image Flask sebagai container. Ops
 
 Buka browser dan masukkan alamat:
 
-<img src="Images/25.png" width="700">
+<img src="images/25.png" width="700">
 
 Apabila halaman aplikasi Flask berhasil ditampilkan, berarti proses pembuatan image dan menjalankan container menggunakan Docker telah berhasil dilakukan. Aplikasi dapat diakses melalui port lokal 5001 meskipun aplikasi di dalam container menggunakan port 5000.
 
@@ -314,8 +314,8 @@ Selain Docker, praktikum ini juga menggunakan Podman untuk membangun dan menjala
 
 Perintah:
 
-<img src="Images/26.png" width="700">
-<img src="Images/27.png" width="700">
+<img src="images/26.png" width="700">
+<img src="images/27.png" width="700">
 
 Perintah tersebut digunakan untuk menampilkan informasi konfigurasi Podman, termasuk lingkungan container dan penyimpanan image. Pemeriksaan ini dilakukan untuk memastikan Podman dapat digunakan sebelum proses pembangunan image dimulai.
 
@@ -325,8 +325,8 @@ Pada lingkungan Windows dengan WSL2, pengelolaan Podman mengikuti konfigurasi Po
 
 Pastikan kembali berada pada direktori `flask-app`, kemudian jalankan:
 
-<img src="Images/28.png" width="700">
-<img src="Images/29.png" width="700">
+<img src="images/28.png" width="700">
+<img src="images/29.png" width="700">
 
 Perintah tersebut digunakan untuk membangun image aplikasi Flask menggunakan Podman. File Dockerfile yang telah dibuat sebelumnya tetap digunakan sebagai dasar proses build. Podman akan membaca setiap instruksi dalam Dockerfile, mengambil image Python yang diperlukan, memasang paket aplikasi, serta menginisialisasi database.
 
@@ -334,7 +334,7 @@ Perintah tersebut digunakan untuk membangun image aplikasi Flask menggunakan Pod
 
 Perintah:
 
-<img src="Images/30.png" width="700">
+<img src="images/30.png" width="700">
 
 Perintah tersebut digunakan untuk menampilkan daftar image yang telah tersedia pada Podman. Hasil pemeriksaan digunakan untuk mengetahui apakah image Flask dengan tag `1.0.0` telah berhasil dibuat.
 
@@ -342,7 +342,7 @@ Perintah tersebut digunakan untuk menampilkan daftar image yang telah tersedia p
 
 Perintah:
 
-<img src="Images/31.png" width="700">
+<img src="images/31.png" width="700">
 
 Perintah tersebut digunakan untuk menjalankan image Flask menggunakan Podman. Pemetaan port dilakukan dengan menghubungkan port 5000 pada container ke port 5001 pada komputer lokal. Dengan pengaturan tersebut, aplikasi dapat diakses melalui browser menggunakan alamat localhost.
 
@@ -350,7 +350,7 @@ Perintah tersebut digunakan untuk menjalankan image Flask menggunakan Podman. Pe
 
 Buka browser dan masukkan alamat:
 
-<img src="Images/32.png" width="700">
+<img src="images/32.png" width="700">
 
 Apabila halaman aplikasi Flask berhasil ditampilkan, berarti image telah berhasil dijalankan menggunakan Podman. Hasil ini menunjukkan bahwa aplikasi yang sama dapat dijalankan melalui dua teknologi container, yaitu Docker dan Podman.
 
@@ -366,7 +366,7 @@ Berdasarkan pembagian layanan XaaS dalam modul, berikut merupakan contoh penyedi
 
 Contoh vendor: Google Workspace.
 
-<img src="Images/33.png" width="700">
+<img src="images/33.png" width="700">
 
 Google Workspace merupakan layanan perangkat lunak berbasis cloud yang menyediakan berbagai aplikasi produktivitas, seperti Google Docs, Google Sheets, Google Slides, dan Google Drive. Pengguna dapat mengakses layanan tersebut melalui browser tanpa harus memasang aplikasi server sendiri. Service yang diberikan berupa penyediaan perangkat lunak siap pakai untuk membantu pekerjaan, pengolahan dokumen, penyimpanan file, dan kolaborasi secara daring.
 
@@ -374,7 +374,7 @@ Google Workspace merupakan layanan perangkat lunak berbasis cloud yang menyediak
 
 Contoh vendor: Heroku.
 
-<img src="Images/34.png" width="700">
+<img src="images/34.png" width="700">
 
 Heroku merupakan platform cloud yang digunakan untuk mengembangkan, menjalankan, dan melakukan deployment aplikasi. Service yang diberikan berupa lingkungan pengembangan dan pengoperasian aplikasi tanpa mengharuskan pengguna mengelola seluruh infrastruktur server secara langsung. Pengembang dapat berfokus pada pembuatan aplikasi, sedangkan platform menyediakan lingkungan untuk menjalankannya.
 
@@ -382,7 +382,7 @@ Heroku merupakan platform cloud yang digunakan untuk mengembangkan, menjalankan,
 
 Contoh vendor: Amazon Web Services (AWS).
 
-<img src="Images/35.png" width="700">
+<img src="images/35.png" width="700">
 
 AWS menyediakan layanan infrastruktur cloud, salah satunya Amazon EC2 yang memungkinkan pengguna menggunakan server virtual. Service yang diberikan berupa sumber daya komputasi, penyimpanan, dan jaringan yang dapat dikonfigurasi sesuai kebutuhan. Pengguna memiliki kendali lebih besar terhadap sistem operasi dan aplikasi yang dijalankan pada server virtual tersebut.
 
@@ -412,7 +412,7 @@ Penyedia menyediakan infrastruktur virtual berupa server, penyimpanan, dan jarin
 
 Visualisasi arsitektur secara sederhana:
 
-<img src="Images/Infografik Arsitektur XaaS Pastel.png" width="700">
+<img src="images/Infografik Arsitektur XaaS Pastel.png" width="700">
 
 # 6. PEMBAHASAN HASIL PRAKTIKUM
 
