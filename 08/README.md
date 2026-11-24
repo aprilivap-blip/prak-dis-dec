@@ -1,26 +1,12 @@
-# Laporan Praktikum 08
+# LAPORAN PRAKTIKUM MODUL 8
+# ARSITEKTUR MICROSERVICES UNTUK SISTEM TERDISTRIBUSI
 
-## Identitas
 
 - **Nama:** Apriliva Putri P
 - **NIM:** 255410035
 - **Kelas:** Informatika-1
 - **Mata kuliah:** Praktikum Sistem Terdistribusi dan Terdesentralisasi
 
-## Pertemuan Praktikum 08
-
-## Judul Praktikum
-
-Laporan Praktikum 08
-
-# LAPORAN PRAKTIKUM MODUL 8
-# ARSITEKTUR MICROSERVICES UNTUK SISTEM TERDISTRIBUSI
-
-**Mata Kuliah:** Praktikum Sistem Terdistribusi dan Terdesentralisasi  
-**Program Studi:** Informatika  
-**Nama:** [Nama Mahasiswa]  
-**NIM:** [NIM]  
-**Kelas:** [Kelas]
 
 ---
 
