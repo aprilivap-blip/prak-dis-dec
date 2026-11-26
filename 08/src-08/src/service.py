@@ -25,11 +25,13 @@ class Produk(SQLModel, table=True):
     )
 
     tersedia: bool
-
     harga: float
 
 
 engine = create_engine("sqlite:///departemen-sdm.db")
+
+SQLModel.metadata.create_all(engine)
+
 
 
 def get_session():
@@ -39,12 +41,14 @@ def get_session():
 
 app = FastAPI()
 
+
 @app.get("/sdm/", response_model=List[Sdm])
 def read_sdm(session: Session = Depends(get_session)):
     # SQLModel select statement
     statement = select(Sdm)
     results = session.exec(statement).all()
     return results
+
 
 @app.get("/produk/", response_model=List[Produk])
 def read_produk(session: Session = Depends(get_session)):

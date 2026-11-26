@@ -1,11 +1,8 @@
 from sqlmodel import Session, select, SQLModel
-
 from service import engine, Produk
-
 
 # Membuat tabel berdasarkan model yang tersedia
 SQLModel.metadata.create_all(engine)
-
 
 # Data produk yang akan dimasukkan
 data_produk = [
@@ -40,7 +37,6 @@ data_produk = [
         harga=85000.75
     )
 ]
-
 
 # Memasukkan data ke database
 with Session(engine) as session:

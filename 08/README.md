@@ -546,31 +546,312 @@ Server akan memproses permintaan dengan mengambil seluruh data produk dari datab
 
 Pengujian ini merupakan tahap akhir dari tugas praktikum, yaitu menampilkan seluruh data yang telah dimasukkan menggunakan script Python melalui RESTful API dengan bantuan curl.
 
-# 5. ANALISIS HASIL PRAKTIKUM
+# 5. TUGAS
 
-Pada praktikum Modul 8 dilakukan pengembangan terhadap source code yang telah disediakan dengan menambahkan tabel baru bernama produk pada database SQLite.
+## 5.1 Membuat Tabel Baru Menggunakan SQLite
 
-Tabel produk memiliki satu primary key dan empat kolom tambahan dengan tipe data CHAR, VARCHAR, BOOLEAN, dan FLOAT. Lima data produk dimasukkan menggunakan script Python melalui SQLModel.
+### Langkah 16. Membuat model tabel Produk
 
-Selanjutnya, endpoint GET `/produk/` ditambahkan ke dalam aplikasi FastAPI. Endpoint tersebut digunakan untuk mengambil seluruh data produk yang tersimpan di dalam database dan mengembalikannya dalam format JSON.
+Buka file `service.py` yang terdapat pada folder `src`. Pada file tersebut, dibuat model baru bernama `Produk` yang berbeda dari tabel bawaan `Sdm`. Model ini digunakan untuk membuat tabel produk pada database SQLite dengan satu primary key dan beberapa tipe data sesuai instruksi tugas.
 
-Pengujian dilakukan menggunakan curl untuk memastikan bahwa data yang telah dimasukkan dapat diakses melalui RESTful API.
+Tambahkan import berikut pada bagian import jika belum tersedia:
 
-Dengan adanya penambahan tersebut, aplikasi yang sebelumnya hanya menyediakan layanan untuk menampilkan data SDM kini juga dapat menyediakan layanan untuk menampilkan data produk.
+```python
+from sqlalchemy import Column, CHAR, String
+```
 
-# 6. KESIMPULAN
+Kemudian tambahkan model `Produk` di bawah class `Sdm`:
 
-Berdasarkan praktikum Modul 8 tentang Arsitektur Microservices untuk Sistem Terdistribusi, dapat disimpulkan bahwa source code FastAPI yang telah disediakan dapat dikembangkan dengan menambahkan tabel dan endpoint baru tanpa harus membuat aplikasi dari awal.
+```python
+class Produk(SQLModel, table=True):
+    id: int | None = Field(
+        default=None,
+        primary_key=True
+    )
 
-Pada praktikum ini dibuat tabel produk dengan tipe data INT, CHAR, VARCHAR, BOOLEAN, dan FLOAT. Lima data produk dimasukkan ke dalam database menggunakan script Python dengan bantuan SQLModel.
+    kode_produk: str = Field(
+        sa_column=Column(CHAR(10), nullable=False)
+    )
 
-Selanjutnya, RESTful API dibuat menggunakan FastAPI untuk menampilkan seluruh data produk melalui endpoint GET `/produk/`. Pengujian dilakukan menggunakan curl untuk melihat respons yang diberikan oleh server dalam format JSON.
+    nama_produk: str = Field(
+        sa_column=Column(String(100), nullable=False)
+    )
 
-Melalui praktikum ini, diperoleh pemahaman mengenai penggunaan FastAPI, SQLModel, SQLite, serta penerapan RESTful API sebagai salah satu bentuk implementasi sistem terdistribusi.
+    tersedia: bool
+
+    harga: float
+```
+
+**Screenshot:**
+
+<img src="Images/18.png" width="700">
+
+**Penjelasan:**
+
+Model `Produk` dibuat menggunakan SQLModel untuk mendefinisikan struktur tabel baru. Kolom `id` digunakan sebagai primary key dengan tipe data INT, `kode_produk` menggunakan CHAR, `nama_produk` menggunakan VARCHAR, `tersedia` menggunakan BOOLEAN, dan `harga` menggunakan FLOAT. Struktur tabel tersebut dibuat untuk memenuhi ketentuan tipe data yang diminta pada tugas Modul 8.
 
 ---
 
-# REFERENSI
+### Langkah 17. Membuat tabel Produk pada database
+
+Setelah model `Produk` ditambahkan, tabel perlu dibuat pada database SQLite. Proses pembuatan tabel dilakukan menggunakan `SQLModel.metadata.create_all(engine)`.
+
+Pastikan kode berikut tersedia pada file `service.py`:
+
+```python
+SQLModel.metadata.create_all(engine)
+```
+
+Kode tersebut menggunakan metadata SQLModel untuk membuat tabel berdasarkan model yang telah didefinisikan. Apabila tabel belum tersedia, SQLModel akan membuat tabel baru pada database yang terhubung melalui `engine`.
+
+**Screenshot:**
+
+<img src="Images/19.png" width="700">
+
+**Penjelasan:**
+
+Pembuatan tabel dilakukan secara otomatis berdasarkan model `Produk` yang telah didefinisikan sebelumnya. Dengan menggunakan `create_all(engine)`, tabel produk dapat ditambahkan ke database yang sama tanpa perlu membuat database baru, sehingga tabel bawaan `sdm` tetap tersedia.
+
+---
+
+## 5.2 Mengisikan Lima Data Menggunakan Script Python
+
+### Langkah 18. Membuat file seed_produk.py
+
+Buat file baru bernama `seed_produk.py` di dalam folder `src`. File ini digunakan untuk memasukkan lima data produk ke dalam tabel `produk` menggunakan script Python.
+
+Masukkan kode berikut ke dalam file `seed_produk.py`:
+
+```python
+from sqlmodel import Session, select, SQLModel
+from service import engine, Produk
+
+# Membuat tabel berdasarkan model
+SQLModel.metadata.create_all(engine)
+
+# Data produk yang akan dimasukkan
+data_produk = [
+    Produk(
+        kode_produk="PRD001",
+        nama_produk="Laptop",
+        tersedia=True,
+        harga=7500000.50
+    ),
+    Produk(
+        kode_produk="PRD002",
+        nama_produk="Mouse",
+        tersedia=True,
+        harga=150000.00
+    ),
+    Produk(
+        kode_produk="PRD003",
+        nama_produk="Keyboard",
+        tersedia=True,
+        harga=275000.50
+    ),
+    Produk(
+        kode_produk="PRD004",
+        nama_produk="Monitor",
+        tersedia=False,
+        harga=1850000.00
+    ),
+    Produk(
+        kode_produk="PRD005",
+        nama_produk="Flashdisk",
+        tersedia=True,
+        harga=85000.75
+    )
+]
+
+# Memasukkan data ke database
+with Session(engine) as session:
+    data_lama = session.exec(select(Produk)).all()
+
+    if not data_lama:
+        session.add_all(data_produk)
+        session.commit()
+        print("5 data produk berhasil dimasukkan.")
+    else:
+        print("Data produk sudah tersedia.")
+```
+
+**Screenshot:**
+
+<img src="Images/20.png" width="700">
+
+**Penjelasan:**
+
+Script `seed_produk.py` digunakan untuk memasukkan lima data produk ke dalam database SQLite. Data produk dibuat dalam bentuk objek `Produk`, kemudian dikumpulkan ke dalam list `data_produk`. Sebelum proses penyimpanan dilakukan, program memeriksa apakah tabel produk telah memiliki data. Jika tabel masih kosong, data dimasukkan menggunakan `session.add_all()` dan disimpan dengan `session.commit()`.
+
+---
+
+### Langkah 19. Menjalankan script Python untuk memasukkan data
+
+Pastikan terminal PowerShell berada di dalam folder `src` dan virtual environment telah aktif. Selanjutnya, jalankan perintah berikut:
+
+```powershell
+python seed_produk.py
+```
+
+**Screenshot:**
+
+<img src="Images/21.png" width="700">
+
+**Penjelasan:**
+
+Perintah tersebut digunakan untuk menjalankan script Python yang telah dibuat. Program akan memeriksa data yang tersedia pada tabel produk dan memasukkan lima data apabila tabel masih kosong. Jika proses berhasil, terminal akan menampilkan pesan `5 data produk berhasil dimasukkan.`
+
+---
+
+### Langkah 20. Memeriksa hasil pengisian data pada SQLite
+
+Setelah proses pengisian data selesai, dilakukan pemeriksaan untuk memastikan lima data produk telah tersimpan ke dalam database.
+
+Buka SQLite melalui terminal PowerShell menggunakan perintah:
+
+```powershell
+sqlite3 departemen-sdm.db
+```
+
+Kemudian tampilkan daftar tabel yang tersedia:
+
+```sql
+.tables
+```
+
+Untuk menampilkan seluruh data produk, jalankan perintah:
+
+```sql
+SELECT * FROM produk;
+```
+
+Untuk melihat struktur tabel produk, jalankan:
+
+```sql
+.schema produk
+```
+
+Setelah selesai melakukan pemeriksaan, keluar dari SQLite menggunakan:
+
+```sql
+.quit
+```
+
+**Screenshot:**
+
+<img src="Images/22.png" width="700">
+
+**Penjelasan:**
+
+Pemeriksaan database dilakukan untuk memastikan tabel produk telah berhasil dibuat dan berisi lima data yang dimasukkan melalui script Python. Perintah `SELECT * FROM produk` digunakan untuk menampilkan seluruh data, sedangkan `.schema produk` digunakan untuk melihat struktur tabel beserta tipe data yang digunakan.
+
+---
+
+## 5.3 Membuat RESTful API Endpoint
+
+### Langkah 21. Menambahkan endpoint GET untuk tabel Produk
+
+Buka kembali file `service.py`. Pastikan model `Produk` sudah tersedia, kemudian tambahkan endpoint berikut di bawah endpoint `read_sdm()`:
+
+```python
+@app.get("/produk/", response_model=List[Produk])
+def read_produk(session: Session = Depends(get_session)):
+    # SQLModel select statement
+    statement = select(Produk)
+    results = session.exec(statement).all()
+    return results
+```
+
+**Screenshot:**
+
+<img src="Images/23.png" width="700">
+
+**Penjelasan:**
+
+Endpoint `/produk/` dibuat menggunakan metode HTTP GET untuk menampilkan seluruh data produk yang tersimpan di database. Perintah `select(Produk)` digunakan untuk mengambil data dari tabel produk, kemudian `session.exec(statement).all()` digunakan untuk menjalankan query dan memperoleh seluruh record. Hasil pengambilan data dikembalikan dalam bentuk JSON melalui FastAPI.
+
+---
+
+## 5.4 Menampilkan Hasil RESTful API Menggunakan Curl
+
+### Langkah 22. Menjalankan server FastAPI
+
+Setelah endpoint produk selesai ditambahkan, jalankan aplikasi FastAPI melalui terminal PowerShell menggunakan perintah:
+
+```powershell
+uvicorn service:app --reload
+```
+
+**Screenshot:**
+
+<img src="Images/24.png" width="700">
+<img src="Images/25.png" width="700">
+
+**Penjelasan:**
+
+Perintah tersebut digunakan untuk menjalankan aplikasi FastAPI menggunakan Uvicorn. `service:app` menunjukkan bahwa aplikasi berada pada file `service.py` dengan objek FastAPI bernama `app`, sedangkan `--reload` digunakan agar server dapat memuat ulang aplikasi secara otomatis ketika terdapat perubahan pada source code. Server dijalankan agar endpoint dapat diakses melalui browser maupun client.
+
+---
+
+### Langkah 23. Mengakses endpoint Produk melalui browser
+
+Buka browser dan masukkan alamat berikut:
+
+```text
+http://127.0.0.1:8000/produk/
+```
+
+**Screenshot:**
+
+<img src="Images/26.png" width="700">`
+
+**Penjelasan:**
+
+Pengujian melalui browser dilakukan untuk memastikan endpoint `/produk/` dapat diakses. Ketika alamat tersebut dibuka, server akan memproses permintaan GET, mengambil seluruh data produk dari database SQLite, dan menampilkan respons dalam format JSON. Hasil yang ditampilkan berupa lima data produk sesuai dengan data yang sebelumnya dimasukkan.
+
+---
+
+### Langkah 24. Menguji RESTful API menggunakan curl
+
+Buka terminal PowerShell baru tanpa menghentikan server FastAPI yang sedang berjalan. Selanjutnya, jalankan perintah:
+
+```powershell
+curl.exe http://127.0.0.1:8000/produk/
+```
+
+**Screenshot:**
+
+<img src="Images/27.png" width="700">`
+
+**Penjelasan:**
+
+Perintah `curl.exe` digunakan untuk mengirimkan permintaan HTTP GET kepada endpoint `/produk/`. Server FastAPI kemudian mengambil seluruh data produk dari database SQLite dan mengirimkannya kembali kepada client dalam bentuk JSON.
+
+Hasil pengujian menunjukkan bahwa endpoint dapat diakses melalui curl dan menampilkan seluruh lima data produk yang telah disimpan. Dengan demikian, proses pembuatan tabel, pengisian data melalui Python, serta penyediaan RESTful API telah berhasil dilakukan sesuai dengan instruksi tugas Modul 8.
+
+---
+
+# 6. ANALISIS HASIL PRAKTIKUM
+
+Pada praktikum Modul 8 dilakukan pengembangan aplikasi berbasis FastAPI dengan menambahkan tabel baru bernama `produk` pada database SQLite `departemen-sdm.db`. Tabel tersebut dibuat menggunakan SQLModel dengan satu primary key dan beberapa kolom yang memiliki tipe data INT, CHAR, VARCHAR, BOOLEAN, dan FLOAT. Penggunaan tipe data tersebut menunjukkan bahwa database dapat menyimpan informasi dengan karakteristik yang berbeda, mulai dari bilangan bulat, teks, nilai logika, hingga bilangan desimal.
+
+Pengisian lima data produk dilakukan melalui script Python `seed_produk.py`. Proses penyimpanan menggunakan SQLModel mempermudah pengelolaan data karena objek Python dapat digunakan untuk merepresentasikan data yang akan disimpan ke dalam tabel. Pemeriksaan data sebelum proses insert juga membantu menghindari penginputan data secara berulang ketika script dijalankan kembali.
+
+Selanjutnya, dibuat endpoint GET `/produk/` menggunakan FastAPI untuk mengambil seluruh data produk dari database. Endpoint tersebut memanfaatkan perintah `select()` untuk menyusun query dan `session.exec().all()` untuk memperoleh seluruh record. Data kemudian dikirimkan kepada client dalam bentuk JSON sehingga dapat diakses melalui browser maupun command line.
+
+Pengujian menggunakan `curl.exe` menunjukkan bahwa endpoint dapat diakses melalui HTTP dan memberikan respons berupa data produk. Hal ini memperlihatkan penerapan komunikasi antara client dan backend melalui RESTful API, sementara SQLite berperan sebagai media penyimpanan data. Secara keseluruhan, praktikum ini memperlihatkan penerapan sederhana layanan backend yang menghubungkan database dengan client melalui API.
+
+---
+
+# 7. KESIMPULAN
+
+Berdasarkan praktikum Modul 8 tentang Arsitektur Microservices untuk Sistem Terdistribusi, dapat disimpulkan bahwa FastAPI dan SQLModel dapat digunakan untuk membangun RESTful API yang terhubung dengan database SQLite. Penambahan tabel `produk` menunjukkan bahwa struktur database dapat dikembangkan dengan menggunakan berbagai tipe data sesuai kebutuhan penyimpanan informasi.
+
+Praktikum ini juga menunjukkan bahwa lima data dapat dimasukkan ke dalam database menggunakan script Python dan selanjutnya diakses melalui endpoint GET `/produk/`. Pengujian menggunakan `curl.exe` membuktikan bahwa endpoint dapat memberikan respons data dalam format JSON. Dengan demikian, praktikum memberikan pemahaman mengenai pembuatan tabel database, pengelolaan data menggunakan Python, serta penyediaan layanan API sebagai salah satu implementasi sistem terdistribusi.
+
+---
+
+# 8. REFERENSI
 
 1. Modul 8 Praktikum Sistem Terdistribusi dan Terdesentralisasi, Universitas Teknologi Digital Indonesia.
 2. Dokumentasi FastAPI: https://fastapi.tiangolo.com/
